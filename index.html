@@ -1,77 +1,158 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌸 مهمة خاصة لنوريشتي 🌸</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مفاجأة لمايا 💖</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to right, #ff5f6d, #ffc371);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      font-family: 'Arial', sans-serif;
       text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #6a0572;
+      padding: 50px;
       min-height: 100vh;
-      padding: 20px;
+      overflow-x: hidden;
     }
-    .container {
-      background-color: rgba(0, 0, 0, 0.5);
+
+    .hidden {
+      display: none;
+    }
+
+    #welcomeModal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
       padding: 30px;
-      border-radius: 20px;
-      max-width: 600px;
+      border-radius: 15px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 0 25px #ff69b4;
     }
+
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      font-size: 2em;
+      margin-bottom: 15px;
     }
+
     p {
-      font-size: 1.3em;
-      margin-bottom: 30px;
-    }
-    button {
-      background-color: #ff69b4;
-      border: none;
-      padding: 15px 30px;
-      color: white;
       font-size: 1.2em;
-      font-weight: bold;
-      border-radius: 999px;
+    }
+
+    button {
+      background-color: #dc143c;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1em;
+      border-radius: 10px;
       cursor: pointer;
+      margin-top: 20px;
       transition: background-color 0.3s;
     }
+
     button:hover {
-      background-color: #ff1493;
+      background-color: #c2185b;
     }
-    #secret {
-      display: none;
-      margin-top: 30px;
-      font-size: 1.2em;
-      background: white;
-      color: #ff1493;
-      padding: 15px;
-      border-radius: 15px;
+
+    .birthday-message {
+      font-size: 1.5em;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      margin-top: 50px;
+      line-height: 2;
+      display: inline-block;
+      max-width: 700px;
+      color: #880e4f;
+      box-shadow: 0 0 20px rgba(255,105,180,0.3);
     }
-    a {
-      color: #ff1493;
-      text-decoration: none;
-      font-weight: bold;
+
+    /* Styles des cœurs */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      color: pink;
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>🌸 إلى نوريشتي الجميلة 🌸</h1>
-    <p>للوصول إلى مفاجأتك الحقيقية... عليك أولاً أن تضغطي على الزر أدناه، فقط إذا كنتِ مستعدة 😏</p>
-    <button onclick="document.getElementById('secret').style.display='block'">🎁 نعم، أنا مستعدة!</button>
-    <div id="secret">
-      هذا هو الرابط السري للمفاجأة الحقيقية :<br><br>
-      <a href="https://imwathri.github.io/Nourishti-birthday-game/" target="_blank">https://imwathri.github.io/Nourishti-birthday-game/</a>
+  <!-- Cœurs générés dynamiquement -->
+  <script>
+    // Générer des cœurs qui tombent
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "💗";
+
+      // Positionnement horizontal aléatoire
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+      // Supprimer après la chute
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    // Lancer une pluie de cœurs toutes les 300ms
+    setInterval(createHeart, 300);
+  </script>
+
+  <!-- Fenêtre d’accueil -->
+  <div id="welcomeModal">
+    <div class="modal-content">
+      <h1>مرحباً بكِ يا مايا 🌸</h1>
+      <p>
+        إذا كان اليوم هو عيد ميلادكِ، وتريدين أن تكتشفي ما الذي أعدّه لكِ <strong>عماد</strong> بكل حب... 💌 <br />
+        اضغطي على الزر لتبدئي المغامرة 🎁
+      </p>
+      <button onclick="startSurprise()">أنا مستعدة ✨</button>
     </div>
   </div>
+
+  <!-- Message de souhait -->
+  <div class="birthday-message hidden" id="birthdayMessage">
+    🎉 عيد ميلاد سعيد يا مايا 🎉<br /><br />
+    أنتِ مغامِرة رائعة، وقلبكِ مليء بالشجاعة والطموح 🚀<br />
+    لا تنسي أن الدراسة طريقكِ إلى تحقيق أحلامكِ الجميلة 🌈📚<br />
+    أتمنى لكِ حياة مليئة بالحب، النجاح، الضحكات، والمفاجآت السعيدة 💖<br />
+    تذكّري دائماً: أنتِ فريدة من نوعكِ، ولا أحد يشبهكِ 🌟<br /><br />
+    - 💌 من عماد، الذي لا يريد سوى رؤيتكِ تبتسمين دائمًا 😊💕
+  </div>
+
+  <script>
+    function startSurprise() {
+      document.getElementById("welcomeModal").style.display = "none";
+      document.getElementById("birthdayMessage").classList.remove("hidden");
+    }
+  </script>
 </body>
 </html>
